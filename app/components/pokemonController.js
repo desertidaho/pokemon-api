@@ -13,15 +13,25 @@ function drawPokemonsAPI() {
   document.querySelector('#list-pokemons').innerHTML = template
 }
 
+function drawCharacter() {
+  let template = _pokemonService.ApiCharacter[0].makeCharCard()
+  document.querySelector('#char-card').innerHTML = template
+
+}
+
 
 //public
 export default class PokemonController {
   constructor() {
     _pokemonService.addSubscriber('apiPokemon', drawPokemonsAPI)
+    _pokemonService.addSubscriber('apiCharacter', drawCharacter)
 
     //Initialize Data
     _pokemonService.getPokemonData()
+  }
 
+  makeCard(name) {
+    _pokemonService.makeCard(name)
   }
 
 
