@@ -21,16 +21,9 @@ function drawCharacter() {
 function drawFromPokedex() {
   let template = ''
   let pokemons = _pokemonService.MyPokedex
-  debugger
-  /*
   pokemons.forEach(pokemon => {
-    template += pokemon.MakePokedexList()
+    template += pokemon.makePokedexList()
   })
-  */
-  for (let char in pokemons) {               //have to use for in because not array
-    template += pokemons[char].makePokedexList()
-  }
-
   document.querySelector('#list-pokedex').innerHTML = template
 }
 
@@ -44,6 +37,7 @@ export default class PokemonController {
 
     //Initialize Data
     _pokemonService.getPokemonData()
+    _pokemonService.myPokedexData()
   }
 
   makeCard(name) {

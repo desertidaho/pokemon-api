@@ -14,7 +14,7 @@ let _sandbox = axios.create({
 let _state = {
   apiPokemon: [],
   apiCharacter: {},
-  myPokedex: {}
+  myPokedex: []
 }
 
 let _subscribers = {
@@ -89,7 +89,7 @@ export default class PokemonService {
   myPokedexData() {
     _sandbox.get()
       .then(res => {
-        let data = res.data
+        let data = res.data.data.map(p => new Pokemon(p))
         setState('myPokedex', data)
       })
       .catch(err => {

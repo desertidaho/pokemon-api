@@ -47,7 +47,7 @@ export default class Pokemon {
   //create list when select char card to add to pokedex
   makePokedexList() {
     return `
-  <button class="btn bt-sm btn-outline-dark shadow mt-2" onclick="app.controllers.pokemonController.makeCard('${this.name}')">${this.name}</button>
+  <button class="btn bt-sm btn-outline-primary shadow mt-2" onclick="app.controllers.pokemonController.makeCard('${this.name}')">${this.name}</button>
     `
   }
 
