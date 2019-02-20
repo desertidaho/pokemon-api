@@ -3,8 +3,7 @@ body {
   padding: 0;
 }
 
-
 .card img {
-  height: 30vh;
-  width: 30vh;
+  height: 20vh;
+  width: auto;
 }

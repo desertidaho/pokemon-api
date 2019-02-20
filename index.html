@@ -15,33 +15,42 @@
 <body>
   <div class="container-fluid">
 
-    <!-- from pokemonAPI -->
     <div class="row">
-      <div class="col-4 mt-5 d-flex justify-content-center">
-        <h1>Pokemon:</h1>
-        <ul id="list-pokemons">
-          <!-- list of pokemon characters goes here -->
-        </ul>
+
+      <!-- from pokemonAPI -->
+      <div class="col-5 mt-5 d-flex justify-content-center">
+        <div>
+          <h1 class="d-flex justify-content-center">Pokemon:</h1>
+          <div class="row">
+            <div class="col mt-5">
+              <ul id="list-pokemons">
+                <!-- list of pokemon characters goes here -->
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- card of an individual character -->
-      <div class="col-8 mt-5">
+      <div class="col-2 mt-5">
         <div class="row" id="char-card">
           <!-- insert card of a pokemon character when clicked -->
         </div>
       </div>
-    </div>
 
-
-    <!-- from sandbox -->
-    <div class="row">
-      <div class="col">
-        <div class="row" id="my-pokedex">
-
+      <!-- from sandbox -->
+      <div class="col-5 mt-5 d-flex justify-content-center">
+        <h1>Pokedex:</h1>
+        <div class="row">
+          <div class="col-4 mt-5 d-flex justify-content-center">
+            <ul id="list-pokedex">
+              <!-- list of pokemon characters goes here -->
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>

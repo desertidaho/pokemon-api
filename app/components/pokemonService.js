@@ -13,12 +13,14 @@ let _sandbox = axios.create({
 
 let _state = {
   apiPokemon: [],
-  apiCharacter: {}
+  apiCharacter: {},
+  myPokedex: {}
 }
 
 let _subscribers = {
   apiPokemon: [],
-  apiCharacter: []
+  apiCharacter: [],
+  myPokedex: []
 }
 
 function setState(prop, data) {
@@ -41,6 +43,10 @@ export default class PokemonService {
     return _state.apiCharacter
   }
 
+  get MyPokedex() {
+    return _state.myPokedex
+  }
+
 
   //GET DATA
   getPokemonData() {
@@ -59,6 +65,32 @@ export default class PokemonService {
       .then(res => {
         let data = new Pokemon(res.data)
         setState('apiCharacter', data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  addToPokedex(name) {
+    //find pokemon
+    let pokemon = _state.apiCharacter //because object, not array
+
+    ///SEND DATA TO SERVER
+    //first parameter is appended on baseURL, second parameter is data to send
+    _sandbox.post('', pokemon)
+      .then(res => {
+        this.myPokedexData()
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  myPokedexData() {
+    _sandbox.get()
+      .then(res => {
+        let data = res.data
+        setState('myPokedex', data)
       })
       .catch(err => {
         console.error(err)
