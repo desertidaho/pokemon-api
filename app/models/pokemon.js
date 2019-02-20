@@ -17,6 +17,9 @@ export default class Pokemon {
     if (data.species) {                        //trick to satisfy sandbox schema requirements
       this.description = data.species.name
     }
+    if (data.id) {
+      this.id = data._id
+    }
   }
 
   //get names from pokemon api
@@ -38,6 +41,7 @@ export default class Pokemon {
              <p class="card-text">Weight: ${this.weight}</p>
              <p class="card-text">Stat: ${this.stat}</p>
              <button class="btn btn-outline-primary" onclick="app.controllers.pokemonController.addToPokedex('${this.name}')">Add to Pokedex</button>
+             <button class="btn btn-outline-danger mt-2" onclick="app.controllers.pokemonController.deleteCard('${this.id}')">Delete From Pokedex</button>
           </div>
       </div>
     </div>

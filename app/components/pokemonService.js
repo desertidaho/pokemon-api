@@ -97,5 +97,15 @@ export default class PokemonService {
       })
   }
 
+  deleteCard(id) {
+    _sandbox.delete(id)
+      .then(res => {
+        console.log(res.data)
+        this.myPokedexData()
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
 }

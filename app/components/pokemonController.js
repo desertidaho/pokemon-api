@@ -48,5 +48,8 @@ export default class PokemonController {
     _pokemonService.addToPokedex(name)
   }
 
+  deleteCard(id) {
+    _pokemonService.deleteCard(id)
+  }
 
 }
