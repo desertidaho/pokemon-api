@@ -13,7 +13,7 @@ let _sandbox = axios.create({
 
 let _state = {
   apiPokemon: [],
-  apiCharacter: []
+  apiCharacter: {}
 }
 
 let _subscribers = {
@@ -34,7 +34,7 @@ export default class PokemonService {
   }
 
   get ApiPokemon() {
-    return _state.apiPokemon.map(h => new Pokemon(h))
+    return _state.apiPokemon.map(p => new Pokemon(p))
   }
 
   get ApiCharacter() {
@@ -57,7 +57,6 @@ export default class PokemonService {
   makeCard(name) {
     _pokemonAPI.get(name)
       .then(res => {
-        console.log(res)
         let data = new Pokemon(res.data)
         setState('apiCharacter', data)
       })
@@ -65,7 +64,6 @@ export default class PokemonService {
         console.error(err)
       })
   }
-
 
 
 }

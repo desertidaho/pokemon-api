@@ -14,9 +14,8 @@ function drawPokemonsAPI() {
 }
 
 function drawCharacter() {
-  let template = _pokemonService.ApiCharacter[0].makeCharCard()
+  let template = _pokemonService.ApiCharacter.makeCharCard()
   document.querySelector('#char-card').innerHTML = template
-
 }
 
 
