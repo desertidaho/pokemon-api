@@ -14,13 +14,15 @@ let _sandbox = axios.create({
 let _state = {
   apiPokemon: [],
   apiCharacter: {},
-  myPokedex: []
+  myPokedex: [],
+  pokedexCharacter: {}
 }
 
 let _subscribers = {
   apiPokemon: [],
   apiCharacter: [],
-  myPokedex: []
+  myPokedex: [],
+  pokedexCharacter: []
 }
 
 function setState(prop, data) {
@@ -45,6 +47,10 @@ export default class PokemonService {
 
   get MyPokedex() {
     return _state.myPokedex
+  }
+
+  get PokedexCharacter() {
+    return _state.pokedexCharacter
   }
 
 
@@ -73,7 +79,7 @@ export default class PokemonService {
 
   addToPokedex(name) {
     //find pokemon
-    let pokemon = _state.apiCharacter //because object, not array
+    let pokemon = _state.apiCharacter
 
     ///SEND DATA TO SERVER
     //first parameter is appended on baseURL, second parameter is data to send
@@ -97,11 +103,22 @@ export default class PokemonService {
       })
   }
 
+  makeCardFromPokedex(_id) {
+    _sandbox.get(_id)
+      .then(res => {
+        let data = new Pokemon(res.data.data)
+        setState('pokedexCharacter', data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   deleteCard(id) {
     _sandbox.delete(id)
       .then(res => {
-        console.log(res.data)
         this.myPokedexData()
+
       })
       .catch(err => {
         console.error(err)

@@ -17,8 +17,8 @@ export default class Pokemon {
     if (data.species) {                        //trick to satisfy sandbox schema requirements
       this.description = data.species.name
     }
-    if (data.id) {
-      this.id = data._id
+    if (data._id) {
+      this._id = data._id
     }
   }
 
@@ -41,7 +41,6 @@ export default class Pokemon {
              <p class="card-text">Weight: ${this.weight}</p>
              <p class="card-text">Stat: ${this.stat}</p>
              <button class="btn btn-outline-primary" onclick="app.controllers.pokemonController.addToPokedex('${this.name}')">Add to Pokedex</button>
-             <button class="btn btn-outline-danger mt-2" onclick="app.controllers.pokemonController.deleteCard('${this.id}')">Delete From Pokedex</button>
           </div>
       </div>
     </div>
@@ -51,7 +50,24 @@ export default class Pokemon {
   //create list when select char card to add to pokedex
   makePokedexList() {
     return `
-  <button class="btn bt-sm btn-outline-primary shadow mt-2" onclick="app.controllers.pokemonController.makeCard('${this.name}')">${this.name}</button>
+  <button class="btn bt-sm btn-outline-primary shadow mt-2" onclick="app.controllers.pokemonController.makeCardFromPokedex('${this._id}')">${this.name}</button>
+    `
+  }
+
+  fromPokedexCharCard() {
+    return `
+    <div class="mt-5">
+      <div class="card">
+        <img class="img-fluid" src="${this.img}" alt="">
+          <div class="card-body">
+             <h4 class="card-title">${this.name}</h4>
+          <!--   <p class="card-text">Height: ${this.height}</p>
+             <p class="card-text">Weight: ${this.weight}</p>
+             <p class="card-text">Stat: ${this.stat}</p> -->
+             <button class="btn btn-outline-danger mt-2" onclick="app.controllers.pokemonController.deleteCard('${this._id}')">Delete From Pokedex</button>
+          </div>
+      </div>
+    </div>
     `
   }
 
