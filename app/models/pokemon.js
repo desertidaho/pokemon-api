@@ -20,27 +20,30 @@ export default class Pokemon {
     if (data._id) {
       this._id = data._id
     }
+    if (data.img) {
+      this.img = data.img
+    }
   }
 
   //get names from pokemon api
   getNameList() {
     return `
-  <button class="btn bt-sm btn-outline-dark shadow mt-2" onclick="app.controllers.pokemonController.makeCard('${this.name}')">${this.name}</button>
-    `
+  <button class="btn bt-sm btn-outline-dark shadow mt-2" onclick="app.controllers.pokemonController.makeCard('${this.name}')">${this.name}</button> 
+  `
   }
 
   //make card when select pokemon character
   makeCharCard() {
     return `
     <div class="mt-5">
-      <div class="card">
+      <div class="card shadow-lg">
         <img class="img-fluid" src="${this.img}" alt="">
-          <div class="card-body">
+          <div class="card-body text-center">
              <h4 class="card-title">${this.name}</h4>
              <p class="card-text">Height: ${this.height}</p>
              <p class="card-text">Weight: ${this.weight}</p>
              <p class="card-text">Stat: ${this.stat}</p>
-             <button class="btn btn-outline-primary" onclick="app.controllers.pokemonController.addToPokedex('${this.name}')">Add to Pokedex</button>
+             <button class="btn btn-primary shadow" onclick="app.controllers.pokemonController.addToPokedex('${this.name}')">Add to Pokedex</button>
           </div>
       </div>
     </div>
@@ -57,14 +60,11 @@ export default class Pokemon {
   fromPokedexCharCard() {
     return `
     <div class="mt-5">
-      <div class="card">
+      <div class="card shadow-lg">
         <img class="img-fluid" src="${this.img}" alt="">
-          <div class="card-body">
+          <div class="card-body text-center">
              <h4 class="card-title">${this.name}</h4>
-          <!--   <p class="card-text">Height: ${this.height}</p>
-             <p class="card-text">Weight: ${this.weight}</p>
-             <p class="card-text">Stat: ${this.stat}</p> -->
-             <button class="btn btn-outline-danger mt-2" onclick="app.controllers.pokemonController.deleteCard('${this._id}')">Delete From Pokedex</button>
+             <button class="btn btn-danger mt-2 shadow" onclick="app.controllers.pokemonController.deleteCard('${this._id}')">Delete From Pokedex</button>
           </div>
       </div>
     </div>

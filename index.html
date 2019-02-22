@@ -18,33 +18,39 @@
     <div class="row">
 
       <!-- from pokemonAPI -->
-      <div class="col-5 mt-5 d-flex justify-content-center">
+      <div class="col-12 col-md-4 mt-5">
         <div>
           <h1 class="d-flex justify-content-center">Pokemon:</h1>
           <div class="row">
-            <div class="col mt-5">
-              <ul id="list-pokemons">
+            <div class="col-10 mt-5">
+              <ul class="ml-4" id="list-pokemons">
                 <!-- list of pokemon characters goes here -->
               </ul>
+              <div class="mt-5 d-flex justify-content-center">
+                <button class="btn btn-dark shadow mt-3 ml-5 mr-2" id="prev" disabled
+                  onclick="app.controllers.pokemonController.previous()">Previous</button>
+                <button class="btn btn-dark shadow mt-3" id="next"
+                  onclick="app.controllers.pokemonController.next()">Next</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- card of an individual character -->
-      <div class="col-2 mt-5">
-        <div class="row" id="char-card">
+      <div class="col-12 col-md-4">
+        <div class="row d-flex justify-content-center" id="char-card">
           <!-- insert card of a pokemon character when clicked -->
         </div>
       </div>
 
       <!-- from sandbox -->
-      <div class="col-5 mt-5 d-flex justify-content-center">
+      <div class="col-12 col-md-4 mt-5">
         <div>
           <h1 class="d-flex justify-content-center">Pokedex:</h1>
           <div class="row">
-            <div class="col mt-5 d-flex justify-content-center">
-              <ul id="list-pokedex">
+            <div class="col-10 mt-5 d-flex justify-content-start">
+              <ul class="ml-3" id="list-pokedex">
                 <!-- list of pokemon characters goes here -->
               </ul>
             </div>

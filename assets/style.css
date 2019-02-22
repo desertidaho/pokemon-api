@@ -4,6 +4,10 @@ body {
 }
 
 .card img {
-  height: 20vh;
-  width: auto;
+  width: 60vw;
+  height: 50vh;
+}
+
+.card {
+  border: 1px solid black;
 }

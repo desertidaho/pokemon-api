@@ -11,6 +11,7 @@ function drawPokemonsAPI() {
     template += pokemon.getNameList()
   })
   document.querySelector('#list-pokemons').innerHTML = template
+
 }
 
 function drawApiCharacter() {
@@ -65,6 +66,14 @@ export default class PokemonController {
 
   deleteCard(_id) {
     _pokemonService.deleteCard(_id)
+  }
+
+  next() {
+    _pokemonService.next()
+  }
+
+  previous() {
+    _pokemonService.previous()
   }
 
 }

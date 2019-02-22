@@ -10,6 +10,7 @@ let _sandbox = axios.create({
   baseURL: 'https://bcw-sandbox.herokuapp.com/api/Brett/heroes'
 })
 
+let x = 0
 
 let _state = {
   apiPokemon: [],
@@ -123,6 +124,42 @@ export default class PokemonService {
       .catch(err => {
         console.error(err)
       })
+  }
+
+
+  next() {
+    x += 20
+    _pokemonAPI.get('?offset=' + x + '&limit=20')
+      .then(res => {
+        let data = res.data.results.map(d => new Pokemon(d))
+        setState('apiPokemon', data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+    document.querySelector('#prev').disabled = false
+    if (x == 960) {
+      document.querySelector('#next').disabled = true
+    }
+  }
+
+  previous() {
+    if (x >= 20) {
+      x -= 20
+      _pokemonAPI.get('?offset=' + x + '&limit=20')
+        .then(res => {
+          let data = res.data.results.map(d => new Pokemon(d))
+          setState('apiPokemon', data)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    } else {
+      document.querySelector('#prev').disabled = true
+    }
+    if (x == 0) {
+      document.querySelector('#prev').disabled = true
+    }
   }
 
 }
